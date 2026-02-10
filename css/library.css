@@ -1,0 +1,229 @@
+/* ============================================
+   KEGEL GO - ESTILOS DA BIBLIOTECA
+   ============================================ */
+
+/* Barra de Busca */
+.search-bar {
+  margin-bottom: var(--spacing-lg);
+}
+
+.search-bar .form-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-full);
+}
+
+/* Tags de Busca Rápida */
+.quick-tags {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+  overflow-x: auto;
+  padding-bottom: var(--spacing-sm);
+}
+
+.tag {
+  background-color: var(--color-fundo-card);
+  border: 1px solid var(--color-borda);
+  color: var(--color-texto-principal);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tag:hover {
+  border-color: var(--color-laranja-queimado);
+  background-color: rgba(217, 119, 6, 0.1);
+}
+
+.tag.active {
+  background-color: var(--color-laranja-queimado);
+  border-color: var(--color-laranja-queimado);
+  color: white;
+}
+
+/* Seção de Pilares */
+.pillars-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.pillars-section h3 {
+  margin-bottom: var(--spacing-md);
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.pillar-card {
+  background-color: var(--color-fundo-card);
+  border: 1px solid var(--color-borda);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.pillar-card:hover {
+  border-color: var(--color-laranja-queimado);
+  background-color: rgba(217, 119, 6, 0.05);
+  transform: translateY(-4px);
+}
+
+.pillar-icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.pillar-card h4 {
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+/* Seção de Artigos */
+.articles-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.articles-section h3 {
+  margin-bottom: var(--spacing-md);
+}
+
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.article-item {
+  background-color: var(--color-fundo-card);
+  border: 1px solid var(--color-borda);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.article-item:hover {
+  border-color: var(--color-laranja-queimado);
+  box-shadow: var(--shadow-md);
+}
+
+.article-item-image {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  background-color: var(--color-azul-escuro);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.article-item-image svg {
+  width: 100%;
+  height: 100%;
+}
+
+.article-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.article-item-title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--color-texto-principal);
+}
+
+.article-item-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-texto-secundario);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.article-item-meta {
+  display: flex;
+  gap: var(--spacing-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-texto-secundario);
+}
+
+.article-item-verified {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-verde-musgo);
+}
+
+/* Detalhe do Artigo */
+.article-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-hero {
+  width: 100%;
+  height: 200px;
+  background-color: var(--color-fundo-card);
+  border-bottom: 1px solid var(--color-borda);
+  overflow: hidden;
+}
+
+.article-hero svg {
+  width: 100%;
+  height: 100%;
+}
+
+.article-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-verde-musgo);
+  margin-bottom: var(--spacing-lg);
+}
+
+.article-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.article-content h3 {
+  color: var(--color-texto-principal);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.article-content p {
+  margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-item {
+    flex-direction: column;
+  }
+
+  .article-item-image {
+    width: 100%;
+    height: 120px;
+  }
+
+  .quick-tags {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

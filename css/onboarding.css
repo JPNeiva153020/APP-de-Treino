@@ -1,0 +1,236 @@
+/* ============================================
+   KEGEL GO - ESTILOS DO ONBOARDING
+   ============================================ */
+
+/* Container do Onboarding */
+.onboarding-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.onboarding-icon {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.onboarding-icon svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 10px rgba(107, 142, 35, 0.3));
+}
+
+/* Grid de Objetivos */
+.objectives-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.objective-card {
+  background-color: var(--color-fundo-card);
+  border: 2px solid var(--color-borda);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.objective-card:hover {
+  border-color: var(--color-laranja-queimado);
+  background-color: rgba(217, 119, 6, 0.05);
+  transform: translateY(-4px);
+}
+
+.objective-card.selected {
+  border-color: var(--color-laranja-queimado);
+  background-color: rgba(217, 119, 6, 0.1);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+}
+
+.objective-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.objective-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.objective-card h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.objective-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-texto-secundario);
+}
+
+/* Conteúdo Educacional */
+.education-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.anatomy-illustration {
+  background-color: var(--color-fundo-card);
+  border: 1px solid var(--color-borda);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.anatomy-illustration svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Métodos de Identificação */
+.education-methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.method {
+  background-color: var(--color-fundo-card);
+  border-left: 4px solid var(--color-verde-musgo);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.method.tip {
+  border-left-color: var(--color-laranja-queimado);
+  background-color: rgba(217, 119, 6, 0.05);
+}
+
+.method-icon {
+  font-size: var(--font-size-2xl);
+  flex-shrink: 0;
+}
+
+.method p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+.method strong {
+  color: var(--color-texto-principal);
+}
+
+/* Seção de Teste */
+.test-section {
+  background-color: var(--color-fundo-card);
+  border: 1px solid var(--color-borda);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.test-section h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.test-section p {
+  margin-bottom: var(--spacing-md);
+}
+
+.test-feedback {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: rgba(107, 142, 35, 0.1);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-verde-musgo);
+}
+
+.test-feedback p {
+  margin: 0;
+  color: var(--color-verde-musgo);
+}
+
+/* Geração de Plano */
+.plan-generation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+.loading-circle {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.loading-circle svg {
+  width: 100%;
+  height: 100%;
+}
+
+.plan-generation-container h2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.plan-generation-container p {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.mt-2xl {
+  margin-top: var(--spacing-2xl);
+}
+
+/* Animações do Onboarding */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.onboarding-container,
+.education-content,
+.plan-generation-container {
+  animation: slideInUp var(--transition-base);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .objectives-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .onboarding-container {
+    padding: var(--spacing-md);
+  }
+
+  .objective-card {
+    padding: var(--spacing-md);
+  }
+}

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kegel GO - Retome o Controle da Sua Saúde</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/onboarding.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/workout.css">
+  <link rel="stylesheet" href="css/library.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+  <!-- ============================================
+       TELA 1: ONBOARDING - BOAS-VINDAS
+       ============================================ -->
+  <div id="onboarding-welcome" class="screen">
+    <div class="progress-bar">
+      <div class="progress-bar-fill" style="width: 25%;"></div>
+    </div>
+
+    <div class="content content-center">
+      <div class="onboarding-container">
+        <div class="onboarding-icon">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+            <circle cx="60" cy="60" r="58" stroke="#6b8e23" stroke-width="2" opacity="0.3"/>
+            <!-- Representação simplificada de um homem -->
+            <circle cx="60" cy="25" r="8" fill="#6b8e23"/>
+            <path d="M 60 35 L 60 55" stroke="#6b8e23" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 60 40 L 45 50" stroke="#6b8e23" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 60 40 L 75 50" stroke="#6b8e23" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 60 55 L 50 75" stroke="#6b8e23" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 60 55 L 70 75" stroke="#6b8e23" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 50 75 L 50 95" stroke="#6b8e23" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 70 75 L 70 95" stroke="#6b8e23" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <h1>Retome o controle da sua saúde.</h1>
+        <p>Exercícios baseados em ciência para melhorar seu vigor, controle e recuperação.</p>
+
+        <button class="btn btn-primary mt-lg" onclick="kegelApp.navigateTo('onboarding-objectives')">
+          COMEÇAR JORNADA
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       TELA 2: ONBOARDING - SELEÇÃO DE OBJETIVO
+       ============================================ -->
+  <div id="onboarding-objectives" class="screen hidden">
+    <div class="progress-bar">
+      <div class="progress-bar-fill" style="width: 50%;"></div>
+    </div>
+
+    <div class="header">
+      <button class="btn-back" onclick="kegelApp.navigateTo('onboarding-welcome')">←</button>
+      <div class="header-title">Qual seu foco?</div>
+      <div style="width: 40px;"></div>
+    </div>
+
+    <div class="content">
+      <div class="container">
+        <div class="objectives-grid">
+          <div class="objective-card" onclick="selectObjective('recuperacao')">
+            <div class="objective-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 30h4v-10h-4v10zm0-14h4V10h-4v10z" fill="#d97706"/>
+              </svg>
+            </div>
+            <h3>Recuperação</h3>
+            <p>Pós-cirurgia e Incontinência</p>
+          </div>
+
+          <div class="objective-card" onclick="selectObjective('vigor')">
+            <div class="objective-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M24 2C12.95 2 4 10.95 4 22c0 11.05 8.95 20 20 20s20-8.95 20-20S35.05 2 24 2zm0 36c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16zm3.5-9h-7v-2h7v2zm0-4h-7v-2h7v2zm0-4h-7v-2h7v2z" fill="#d97706"/>
+              </svg>
+            </div>
+            <h3>Vigor Sexual</h3>
+            <p>Aumentar rigidez e duração</p>
+          </div>
+
+          <div class="objective-card" onclick="selectObjective('performance')">
+            <div class="objective-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M24 2C12.95 2 4 10.95 4 22c0 11.05 8.95 20 20 20s20-8.95 20-20S35.05 2 24 2zm0 36c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16zm-1-27h2v14h-2zm0 16h2v2h-2z" fill="#d97706"/>
+              </svg>
+            </div>
+            <h3>Performance</h3>
+            <p>Controle ejaculatório avançado</p>
+          </div>
+
+          <div class="objective-card" onclick="selectObjective('prevencao')">
+            <div class="objective-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M24 2C12.95 2 4 10.95 4 22c0 11.05 8.95 20 20 20s20-8.95 20-20S35.05 2 24 2zm0 36c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16zm0-28c-6.63 0-12 5.37-12 12s5.37 12 12 12 12-5.37 12-12-5.37-12-12-12zm0 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" fill="#d97706"/>
+              </svg>
+            </div>
+            <h3>Prevenção</h3>
+            <p>Manter a saúde a longo prazo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       TELA 3: ONBOARDING - EDUCAÇÃO (ENCONTRANDO O MÚSCULO)
+       ============================================ -->
+  <div id="onboarding-education" class="screen hidden">
+    <div class="progress-bar">
+      <div class="progress-bar-fill" style="width: 75%;"></div>
+    </div>
+
+    <div class="header">
+      <button class="btn-back" onclick="kegelApp.navigateTo('onboarding-objectives')">←</button>
+      <div class="header-title">Encontrando o músculo certo</div>
+      <div style="width: 40px;"></div>
+    </div>
+
+    <div class="content">
+      <div class="container">
+        <div class="education-content">
+          <!-- Ilustração Anatômica -->
+          <div class="anatomy-illustration">
+            <svg width="100%" height="200" viewBox="0 0 200 200" fill="none">
+              <ellipse cx="100" cy="100" rx="80" ry="90" fill="#1e2936" stroke="#4a5a6a" stroke-width="2"/>
+              
+              <!-- Representação do assoalho pélvico -->
+              <ellipse cx="100" cy="130" rx="50" ry="30" fill="none" stroke="#d97706" stroke-width="3"/>
+              <path d="M 70 130 Q 100 145 130 130" stroke="#d97706" stroke-width="2" fill="none"/>
+              
+              <!-- Músculos -->
+              <path d="M 80 120 Q 100 135 120 120" stroke="#6b8e23" stroke-width="2" fill="none"/>
+              
+              <!-- Indicadores -->
+              <circle cx="100" cy="130" r="3" fill="#d97706"/>
+            </svg>
+          </div>
+
+          <!-- Métodos de Identificação -->
+          <div class="education-methods">
+            <div class="method">
+              <div class="method-icon">💧</div>
+              <p><strong>Método 1:</strong> Imagine que você está tentando interromper o fluxo de urina.</p>
+            </div>
+
+            <div class="method">
+              <div class="method-icon">💨</div>
+              <p><strong>Método 2:</strong> Imagine que você está tentando impedir a passagem de gases.</p>
+            </div>
+
+            <div class="method tip">
+              <div class="method-icon">💡</div>
+              <p><strong>Dica:</strong> Não prenda a respiração e relaxe o abdômen. O movimento é interno e sutil.</p>
+            </div>
+          </div>
+
+          <!-- Teste de 3 Segundos (Momento Ah-ha!) -->
+          <div class="test-section">
+            <h3>Vamos testar?</h3>
+            <p>Tente contrair o músculo por 3 segundos agora. Você sentirá uma vibração quando começar.</p>
+            
+            <button class="btn btn-primary mt-lg" id="test-button" onclick="startThreeSecondTest()">
+              FAZER TESTE DE 3 SEGUNDOS
+            </button>
+
+            <div id="test-feedback" class="test-feedback hidden">
+              <p id="test-message"></p>
+            </div>
+          </div>
+
+          <!-- Botão para Continuar -->
+          <button class="btn btn-secondary mt-lg" onclick="kegelApp.navigateTo('onboarding-plan-generation')">
+            PRÓXIMO
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       TELA 4: ONBOARDING - GERAÇÃO DE PLANO
+       ============================================ -->
+  <div id="onboarding-plan-generation" class="screen hidden">
+    <div class="progress-bar">
+      <div class="progress-bar-fill" style="width: 100%;"></div>
+    </div>
+
+    <div class="content content-center">
+      <div class="plan-generation-container">
+        <div class="loading-circle">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+            <circle cx="60" cy="60" r="50" stroke="#6b8e23" stroke-width="3" opacity="0.2"/>
+            <circle cx="60" cy="60" r="50" stroke="#6b8e23" stroke-width="3" fill="none" 
+                    stroke-dasharray="314" stroke-dashoffset="78" 
+                    style="animation: spin 2s linear infinite; transform-origin: center;"/>
+          </svg>
+        </div>
+
+        <h2>Plano Gerado!</h2>
+        <p id="plan-message">Você começará com o Nível 1 (Iniciante).</p>
+        <p id="plan-time">Tempo diário estimado: 5 minutos.</p>
+        <p class="mt-lg" style="font-size: 14px; color: #b0b8c0;">Preparando sua biblioteca de conteúdos...</p>
+
+        <button class="btn btn-primary mt-2xl" onclick="completOnboarding()">
+          IR PARA O DASHBOARD
+        </button>
+      </div>
+    </div>
+
+    <style>
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </div>
+
+  <!-- ============================================
+       TELA 5: DASHBOARD
+       ============================================ -->
+  <div id="dashboard" class="screen hidden">
+    <div class="header">
+      <div style="width: 40px;"></div>
+      <div class="header-title">Kegel GO</div>
+      <button class="btn-back" style="background: none; border: none; color: #d97706; font-size: 24px; cursor: pointer;" onclick="kegelApp.navigateTo('profile')">⚙️</button>
+    </div>
+
+    <div class="content">
+      <div class="container">
+        <!-- Saudação e Streak -->
+        <div class="dashboard-header">
+          <h2 id="greeting">Olá, Usuário!</h2>
+          <div class="streak-badge">
+            <span class="streak-icon">🔥</span>
+            <span id="streak-count">0</span> Dias
+          </div>
+        </div>
+
+        <!-- Card de Treino do Dia -->
+        <div class="workout-card">
+          <div class="workout-card-header">
+            <h3>Treino de Hoje</h3>
+            <span class="workout-level" id="workout-level">Iniciante</span>
+          </div>
+          <div class="workout-card-details">
+            <div class="detail">
+              <span class="detail-icon">⏱️</span>
+              <span id="workout-time">5 min</span>
+            </div>
+            <div class="detail">
+              <span class="detail-icon">🔄</span>
+              <span id="workout-reps">15 Repetições</span>
+            </div>
+            <div class="detail">
+              <span class="detail-icon">📊</span>
+              <span id="workout-series">3 Séries</span>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="kegelApp.navigateTo('workout-active')">
+            COMEÇAR
+          </button>
+        </div>
+
+        <!-- Calendário da Semana -->
+        <div class="week-calendar">
+          <h3>Sua semana</h3>
+          <div class="calendar-grid" id="week-calendar"></div>
+        </div>
+
+        <!-- Artigo Sugerido -->
+        <div class="suggested-section">
+          <h3>Sugerido para você</h3>
+          <div class="article-card" onclick="kegelApp.navigateTo('article-detail')">
+            <div class="article-image">
+              <svg width="100%" height="100" viewBox="0 0 100 100" fill="none">
+                <rect width="100" height="100" fill="#4a5a6a"/>
+                <text x="50" y="50" text-anchor="middle" dy=".3em" fill="#b0b8c0" font-size="12">Artigo</text>
+              </svg>
+            </div>
+            <div class="article-info">
+              <h4>A ciência por trás do controle</h4>
+              <p>Entenda como os exercícios funcionam no seu corpo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegação Inferior -->
+    <div class="nav-bar">
+      <a class="nav-item active" data-screen="dashboard">
+        <span class="nav-icon">🏠</span>
+        <span>Início</span>
+      </a>
+      <a class="nav-item" data-screen="library">
+        <span class="nav-icon">📚</span>
+        <span>Biblioteca</span>
+      </a>
+      <a class="nav-item" data-screen="progress">
+        <span class="nav-icon">📈</span>
+        <span>Progresso</span>
+      </a>
+      <a class="nav-item" data-screen="notifications">
+        <span class="nav-icon">🔔</span>
+        <span>Notificações</span>
+      </a>
+      <a class="nav-item" data-screen="profile">
+        <span class="nav-icon">👤</span>
+        <span>Perfil</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================
+       TELA 6: TREINO ATIVO
+       ============================================ -->
+  <div id="workout-active" class="screen hidden">
+    <div class="header">
+      <button class="btn-back" onclick="pauseWorkout()">←</button>
+      <div class="header-title">Treino Ativo</div>
+      <button class="btn-back" style="background: none; border: none; color: #d97706; font-size: 24px; cursor: pointer;" onclick="toggleInvisibleMode()">👁️</button>
+    </div>
+
+    <div class="content">
+      <div class="container">
+        <div class="workout-container">
+          <!-- Timer e Instruções -->
+          <div class="timer-section">
+            <div class="instruction-text" id="instruction">CONTRAIA</div>
+            <div class="timer-circle" id="timer-circle">
+              <span class="timer-text" id="timer-text">05s</span>
+            </div>
+          </div>
+
+          <!-- Informações de Progresso -->
+          <div class="progress-info">
+            <div class="progress-item">
+              <span class="progress-label">Repetições:</span>
+              <span class="progress-value" id="reps-count">3/15</span>
+            </div>
+            <div class="progress-item">
+              <span class="progress-label">Séries:</span>
+              <span class="progress-value" id="series-count">1/3</span>
+            </div>
+          </div>
+
+          <!-- Dicas de Execução -->
+          <div class="execution-tips">
+            <div class="tip">
+              <span class="tip-icon">💡</span>
+              <p id="tip-text">Mantenha glúteos e abdômen relaxados. Não prenda a respiração.</p>
+            </div>
+          </div>
+
+          <!-- Ilustração da Posição -->
+          <div class="position-illustration">
+            <svg width="100%" height="150" viewBox="0 0 200 150" fill="none">
+              <text x="100" y="75" text-anchor="middle" dy=".3em" fill="#b0b8c0" font-size="14">[Ilustração da Posição]</text>
+            </svg>
+          </div>
+
+          <!-- Controles -->
+          <div class="workout-controls">
+            <button class="btn btn-secondary" onclick="pauseWorkout()">PAUSAR</button>
+            <button class="btn btn-primary" onclick="nextExercise()">PRÓXIMO</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       TELA 7: TREINO CONCLUÍDO
+       ============================================ -->
+  <div id="workout-complete" class="screen hidden">
+    <div class="content content-center">
+      <div class="completion-container">
+        <div class="completion-icon">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="48" stroke="#6b8e23" stroke-width="2" fill="none"/>
+            <path d="M 35 50 L 45 60 L 65 40" stroke="#6b8e23" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <h2>Treino Concluído!</h2>
+        <p>Excelente trabalho. Você está mais forte hoje.</p>
+
+        <div class="completion-stats">
+          <div class="stat">
+            <span class="stat-label">Tempo Total:</span>
+            <span class="stat-value" id="total-time">05:00</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Nível:</span>
+            <span class="stat-value" id="completion-level">Iniciante</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Streak:</span>
+            <span class="stat-value" id="completion-streak">1 Dia (+1)</span>
+          </div>
+        </div>
+
+        <button class="btn btn-primary mt-lg" onclick="kegelApp.navigateTo('dashboard')">
+          VOLTAR AO DASHBOARD
+        </button>
+
+        <a href="#" class="link-button mt-md" onclick="kegelApp.navigateTo('article-detail'); return false;">
+          Entenda os benefícios deste treino (Ler Artigo)
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       TELA 8: BIBLIOTECA
+       ============================================ -->
+  <div id="library" class="screen hidden">
+    <div class="header">
+      <div style="width: 40px;"></div>
+      <div class="header-title">Biblioteca</div>
+      <div style="width: 40px;"></div>
+    </div>
+
+    <div class="content">
+      <div class="container">
+        <!-- Barra de Busca -->
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar temas, sintomas, hormônios..." class="form-input" id="search-input">
+        </div>
+
+        <!-- Tags de Busca Rápida -->
+        <div class="quick-tags">
+          <span class="tag" onclick="filterByTag('ansiedade')">#Ansiedade</span>
+          <span class="tag" onclick="filterByTag('testosterona')">#Testosterona</span>
+          <span class="tag" onclick="filterByTag('pos-cirurgia')">#Pós-Cirurgia</span>
+          <span class="tag" onclick="filterByTag('ereção')">#Ereção</span>
+        </div>
+
+        <!-- Navegação por Pilares -->
+        <div class="pillars-section">
+          <h3>Navegue por pilares</h3>
+          <div class="pillars-grid">
+            <div class="pillar-card" onclick="filterByPillar('mental')">
+              <div class="pillar-icon">🧠</div>
+              <h4>Saúde Mental & Foco</h4>
+            </div>
+            <div class="pillar-card" onclick="filterByPillar('anatomia')">
+              <div class="pillar-icon">🫀</div>
+              <h4>Anatomia & Função</h4>
+            </div>
+            <div class="pillar-card" onclick="filterByPillar('lifestyle')">
+              <div class="pillar-icon">🥗</div>
+              <h4>Estilo de Vida & Nutrição</h4>
+            </div>
+            <div class="pillar-card" onclick="filterByPillar('performance')">
+              <div class="pillar-icon">⚡</div>
+              <h4>Performance Avançada</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de Artigos Populares -->
+        <div class="articles-section">
+          <h3>Populares entre usuários</h3>
+          <div class="articles-list" id="articles-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegação Inferior -->
+    <div class="nav-bar">
+      <a class="nav-item" data-screen="dashboard">
+        <span class="nav-icon">🏠</span>
+        <span>Início</span>
+      </a>
+      <a class="nav-item active" data-screen="library">
+        <span class="nav-icon">📚</span>
+        <span>Biblioteca</span>
+      </a>
+      <a class="nav-item" data-screen="progress">
+        <span class="nav-icon">📈</span>
+        <span>Progresso</span>
+      </a>
+      <a class="nav-item" data-screen="notifications">
+        <span class="nav-icon">🔔</span>
+        <span>Notificações</span>
+      </a>
+      <a class="nav-item" data-screen="profile">
+        <span class="nav-icon">👤</span>
+        <span>Perfil</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================
+       TELA 9: DETALHE DO ARTIGO
+       ============================================ -->
+  <div id="article-detail" class="screen hidden">
+    <div class="header">
+      <button class="btn-back" onclick="kegelApp.navigateTo('library')">←</button>
+      <div class="header-title">Artigo</div>
+      <button class="btn-back" style="background: none; border: none; color: #d97706; font-size: 20px; cursor: pointer;">⭐</button>
+    </div>
+
+    <div class="content">
+      <div class="article-container">
+        <!-- Imagem do Artigo -->
+        <div class="article-hero">
+          <svg width="100%" height="200" viewBox="0 0 300 200" fill="none">
+            <rect width="300" height="200" fill="#4a5a6a"/>
+            <text x="150" y="100" text-anchor="middle" dy=".3em" fill="#b0b8c0" font-size="16">Imagem do Artigo</text>
+          </svg>
+        </div>
+
+        <div class="container">
+          <!-- Título e Autor -->
+          <h2>A ciência por trás do controle ejaculatório</h2>
+          <p class="article-meta">Revisado por: <strong>Dr. André Silva, Urologista</strong></p>
+
+          <!-- Conteúdo do Artigo -->
+          <div class="article-content">
+            <h3>Subtítulo 1: O Ciclo da Ansiedade</h3>
+            <p>A ansiedade é coistim don connorosos da ansiedade patentes dess: un amento de exercícios fadan seus guitas em que pravoer methoros secompliem.</p>
+
+            <h3>Subtítulo 2: A Conexão Mente-Corpo</h3>
+            <p>A imação mente-corpo, não cuixe em mta controsa de nerax nas utiunicas-mente-corpo, qunidade de não somentra, solvem torrar momento por, fii ais.</p>
+
+            <h3>Subtítulo 3: Quebrando o Padrão</h3>
+            <p>A padranuitação comprado de nonne erirmed...</p>
+          </div>
+
+          <!-- Botão de Ação -->
+          <button class="btn btn-primary mt-lg" onclick="kegelApp.navigateTo('workout-active')">
+            PRATICAR EXERCÍCIO RELACIONADO
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       TELA 10: PERFIL
+       ============================================ -->
+  <div id="profile" class="screen hidden">
+    <div class="header">
+      <div style="width: 40px;"></div>
+      <div class="header-title">Perfil</div>
+      <div style="width: 40px;"></div>
+    </div>
+
+    <div class="content">
+      <div class="container">
+        <!-- Informações do Usuário -->
+        <div class="profile-header">
+          <div class="profile-avatar">👤</div>
+          <h2 id="profile-name">Usuário</h2>
+        </div>
+
+        <!-- Objetivo Atual -->
+        <div class="profile-section">
+          <div class="section-item">
+            <span class="section-label">Objetivo Atual</span>
+            <span class="section-value" id="profile-objective">Vigor Sexual</span>
+          </div>
+        </div>
+
+        <!-- Configurações -->
+        <div class="profile-section">
+          <h3>Configurações</h3>
+
+          <div class="setting-item">
+            <div class="setting-label">
+              <span>Notificações Discretas</span>
+              <small>Oculta o nome dos exercícios na tela de bloqueio</small>
+            </div>
+            <input type="checkbox" class="toggle-switch" id="discrete-notifications" checked>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-label">
+              <span>Modo Invisível</span>
+              <small>Configurar padrões de vibração</small>
+            </div>
+            <button class="btn btn-small btn-secondary">Configurar</button>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-label">
+              <span>Acessibilidade</span>
+              <small>Tamanho da Fonte / Contraste</small>
+            </div>
+            <button class="btn btn-small btn-secondary">Ajustar</button>
+          </div>
+        </div>
+
+        <!-- Suporte -->
+        <div class="profile-section">
+          <button class="btn btn-secondary" style="width: 100%; margin-bottom: 12px;">
+            Suporte e Ciência
+          </button>
+          <button class="btn btn-secondary" style="width: 100%; margin-bottom: 12px;">
+            Sair
+          </button>
+          <button class="btn btn-secondary" style="width: 100%; color: #ef4444;">
+            Excluir Conta
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegação Inferior -->
+    <div class="nav-bar">
+      <a class="nav-item" data-screen="dashboard">
+        <span class="nav-icon">🏠</span>
+        <span>Início</span>
+      </a>
+      <a class="nav-item" data-screen="library">
+        <span class="nav-icon">📚</span>
+        <span>Biblioteca</span>
+      </a>
+      <a class="nav-item" data-screen="progress">
+        <span class="nav-icon">📈</span>
+        <span>Progresso</span>
+      </a>
+      <a class="nav-item" data-screen="notifications">
+        <span class="nav-icon">🔔</span>
+        <span>Notificações</span>
+      </a>
+      <a class="nav-item active" data-screen="profile">
+        <span class="nav-icon">👤</span>
+        <span>Perfil</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/onboarding.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/workout.js"></script>
+  <script src="js/library.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
