@@ -1,13 +1,15 @@
 // app/(tabs)/_layout.tsx
 // SUBSTITUA TODO O CONTEÚDO ATUAL deste arquivo por este.
 //
-// Esta é uma versão temporária e simplificada — o layout original do
-// template do Expo dependia do arquivo constants/theme.ts que sobrescrevemos
-// no commit anterior (ele tinha um formato diferente, com Colors.light/dark).
-// Quando construirmos a navegação real do app (5 abas: Meu Plano, Treinos,
-// Progresso, Exercícios, Perfil — Bloco J do roadmap), este arquivo inteiro
-// será substituído de novo, então não vale a pena investir em deixá-lo bonito
-// agora — só precisa parar de quebrar.
+// Removemos a aba "Explorar" (Tabs.Screen name="explore") porque ela é
+// boilerplate do template padrão do Expo, não faz parte do nosso app, e
+// dependia de outra propriedade do theme.ts original que já removemos.
+// Em vez de consertar uma tela que vamos jogar fora de qualquer forma,
+// simplesmente paramos de referenciá-la aqui.
+//
+// Lembrete: este arquivo inteiro é temporário — vai ser substituído pela
+// navegação real de 5 abas (Meu Plano, Treinos, Progresso, Exercícios,
+// Perfil) quando chegarmos no Bloco J do roadmap.
 
 import { Tabs } from 'expo-router';
 import { COLORS } from '../../constants/theme';
@@ -26,7 +28,6 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen name="index" options={{ title: 'Início' }} />
-      <Tabs.Screen name="explore" options={{ title: 'Explorar' }} />
     </Tabs>
   );
 }
