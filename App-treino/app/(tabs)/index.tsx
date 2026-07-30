@@ -1,18 +1,17 @@
 // app/(tabs)/index.tsx
-// SUBSTITUIÇÃO TEMPORÁRIA — só para testar a WelcomeScreen agora.
-// Quando começarmos a construir o fluxo de onboarding de verdade (próxima
-// etapa), isso vira uma tela própria dentro de uma pilha de navegação, e o
-// conteúdo original desta tab volta a ser a Home do app.
+// SUBSTITUA TODO O CONTEÚDO ATUAL deste arquivo por este.
+//
+// Isso substitui o "hack de teste" do commit anterior (que mostrava a
+// WelcomeScreen direto na aba Home). Agora a Welcome vive na navegação real
+// (app/onboarding/welcome.tsx), e esta tela só redireciona para lá assim que
+// o app abre. Quando o onboarding estiver completo (última etapa do fluxo),
+// vamos trocar este redirect por uma lógica real: se o usuário já completou
+// o onboarding, mostra a Home de verdade; senão, redireciona para o
+// onboarding — mas isso depende de já termos o Supabase conectado para
+// checar o estado do usuário, então fica para depois.
 
-import WelcomeScreen from '../../components/onboarding/WelcomeScreen';
+import { Redirect } from 'expo-router';
 
-export default function HomeScreen() {
-  return (
-    <WelcomeScreen
-      onNext={() => {
-        // Ainda não existe próxima tela — só confirma que o botão funciona.
-        alert('Continuar pressionado! A próxima tela (Objetivo) ainda não existe.');
-      }}
-    />
-  );
+export default function Index() {
+  return <Redirect href="/onboarding/welcome" />;
 }
