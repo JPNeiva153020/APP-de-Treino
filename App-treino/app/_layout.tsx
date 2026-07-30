@@ -1,8 +1,9 @@
 // app/_layout.tsx
-// Substitua TODO o conteúdo atual deste arquivo por este.
-// Ele garante que Montserrat/Inter estejam carregadas antes de qualquer tela
-// aparecer (sem isso, o texto renderiza na fonte padrão do sistema por um
-// instante, e alguns estilos de peso/weight não existem na fonte do sistema).
+// SUBSTITUA TODO O CONTEÚDO ATUAL deste arquivo por este.
+//
+// Mudança: envolvido em <SafeAreaProvider>, que é o que fornece os valores
+// de insets (notch, barra de status, barra de gestos) para qualquer tela
+// que use useSafeAreaInsets() — como o ScreenHeader corrigido agora.
 
 import { useFonts } from 'expo-font';
 import {
@@ -15,6 +16,7 @@ import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold } from '@expo-goog
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, ActivityIndicator } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { COLORS } from '../constants/theme';
 
 export default function RootLayout() {
@@ -30,16 +32,18 @@ export default function RootLayout() {
 
   if (!fontsLoaded) {
     return (
-      <View style={{ flex: 1, backgroundColor: COLORS.bg, alignItems: 'center', justifyContent: 'center' }}>
-        <ActivityIndicator color={COLORS.saude} />
-      </View>
+      <SafeAreaProvider>
+        <View style={{ flex: 1, backgroundColor: COLORS.bg, alignItems: 'center', justifyContent: 'center' }}>
+          <ActivityIndicator color={COLORS.saude} />
+        </View>
+      </SafeAreaProvider>
     );
   }
 
   return (
-    <>
+    <SafeAreaProvider>
       <StatusBar style="light" />
       <Stack screenOptions={{ headerShown: false }} />
-    </>
+    </SafeAreaProvider>
   );
 }
