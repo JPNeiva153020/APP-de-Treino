@@ -1,26 +1,19 @@
 // app/onboarding/register.tsx
-// PLACEHOLDER — a tela de Cadastro de verdade (nome, e-mail, senha) é a
-// próxima a ser construída. Este arquivo só existe para o botão "Entrar" e
-// o link "Criar conta" da tela de Login terem para onde navegar sem quebrar.
+// SUBSTITUA TODO O CONTEÚDO ATUAL deste arquivo (o placeholder) por este.
 
-import { View, Text, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
-import { COLORS, FONTS } from '../../constants/theme';
-import ScreenHeader from '../../components/ui/ScreenHeader';
+import RegisterScreen from '../../components/onboarding/RegisterScreen';
 
 export default function Register() {
   return (
-    <View style={styles.container}>
-      <ScreenHeader title="Criar conta" onBack={() => router.back()} />
-      <View style={styles.center}>
-        <Text style={styles.text}>Tela de cadastro — próxima a ser construída.</Text>
-      </View>
-    </View>
+    <RegisterScreen
+      onBack={() => router.back()}
+      onCriarConta={(dados) => {
+        // Criação de conta real via Supabase Auth entra quando conectarmos
+        // o backend. Por enquanto só confirma navegação + validação.
+        console.log('Cadastro (mock):', dados);
+        router.push('/onboarding/physical-data');
+      }}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.bg },
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 },
-  text: { fontFamily: FONTS.body, fontSize: 14, color: COLORS.textMuted, textAlign: 'center' },
-});
